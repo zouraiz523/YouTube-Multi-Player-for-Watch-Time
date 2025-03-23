@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Multi-Player for Watch Time</title>
+  <link rel="icon" type="images" href="logo.png">
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css"> <!--- google font link -->
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Link to Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Popup Container -->
+<div id="vpnNotification" class="vpn-popup">
+    <div class="vpn-popup-content">
+      <div class="vpn-popup-header">
+        <div class="vpn-icon">
+          <!-- SVG Icon for VPN -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="none" d="M0 0h24v24H0z"/>
+            <path d="M12 1l8.217 1.826a1 1 0 0 1 .783.976v9.987a6 6 0 0 1-2.672 4.992L12 23l-6.328-4.219A6 6 0 0 1 3 13.79V3.802a1 1 0 0 1 .783-.976L12 1z" fill="#c4302b"/>
+          </svg>
+        </div>
+        <div class="vpn-title">IMPORTANT SECURITY NOTICE</div>
+        <div class="vpn-close-btn" onclick="closeVpnPopup()">&times;</div>
+      </div>
+      <div class="vpn-popup-body">
+        <p>To maximize YouTube watch time safely, please activate a VPN before using this tool.</p>
+        <p><strong>For the best experience:</strong></p>
+        <ul>
+          <li>Use a premium VPN service for optimal protection</li>
+          <li>Connect to a server with fast streaming capabilities</li>
+          <li>Ensure your VPN is active before adding any videos</li>
+        </ul>
+        <div class="vpn-action">
+          <button class="vpn-understand-btn" onclick="closeVpnPopup()">I Understand</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Theme Toggle Button -->
+<div class="theme-toggle-container">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <div class="toggle-ball">
+            <span class="toggle-icon" id="toggleIcon">☀️</span>
+        </div>
+    </button>
+</div>
+
+<h1>YouTube Multi-Player for Watch Time</h1>
+
+<!-- Logo Container -->
+<div class="logo-container">
+    <div class="logo">Zouraiz's Multi-Player 2025</div>
+</div>
+
+<!-- Controls for adding videos and managing playback -->
+<div class="controls">
+  <div class="input-container">
+      <input type="text" id="videoUrl" placeholder="Paste YouTube video link here...">
+      <button class="add-button" onclick="addPlayer()">Add the link video</button>
+  </div>
+  <div class="control-buttons">
+      <div class="play-count-container">
+          <label for="playCount">Plays per video: </label>
+          <input type="number" id="playCount" min="1" max="100" value="50">
+      </div>
+
+      <!-- New Button and Input Field for adding multiple videos -->
+      <div class="add-multiple-container">
+          <label for="addMultipleCount">Add Multiple Videos: </label>
+          <input type="number" id="addMultipleCount" min="1" max="50" value="">
+          <button onclick="addMultiplePlayers()" class="btn-add-multiple">Add Multiple</button>
+      </div>
+
+      <button onclick="startAllVideos()" class="btn-start">Start All Videos</button>
+      <button onclick="stopAllVideos()" class="btn-stop">Stop All</button>
+      <button onclick="removeAllPlayers()" class="btn-remove">Remove All</button>
+  </div>
+</div>
+
+<!-- Error message container -->
+<div id="errorMessage" class="error"></div>
+
+<!-- Player grid where video players will be added -->
+<div id="playerGrid" class="player-grid">
+    <!-- Players will be added here -->
+</div>
+
+<!-- Instructions for using the tool -->
+<div class="instructions">
+    <h3>Instructions:</h3>
+    <ol>
+        <li>Copy video URL from YouTube</li>
+        <li>Paste it in the box above</li>
+        <li>Click "Add the link video" (add multiple videos for more watch time)</li>
+        <li>Set how many times each video should play</li>
+        <li>Click "Start All Videos" to begin playback</li>
+    </ol>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-wave"></div>
+  <div class="footer-container">
+    <div class="footer-info">
+      <div class="copyright">© 2025 Zouraiz's YouTube Multi-Player | All Rights Reserved</div>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:mr.zouraiz1580@gmail.com">mr.zouraiz1580@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <a href="https://wa.me/923464065605">+923464065605</a>
+        </div>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="https://github.com/zouraiz523" target="_blank" class="icon github" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/developer_zouraiz_/" target="_blank" class="icon instagram" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/zouraiz-web-development-793635261/" target="_blank" class="icon linkedin" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://www.youtube.com/@CodingMaker" target="_blank" class="icon youtube" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://developerzouraiz1.blogspot.com/" target="_blank" class="icon blogger" aria-label="Blogger">
+        <i class="fab fa-blogger"></i>
+      </a>
+    </div>
+  </div>
+</footer> 
+<!-- Link to external JavaScript file -->
+<script src="script.js"></script>
+<!-- Script to initialize theme from localStorage -->
+<script>
+    // Initialize theme from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const isDarkMode = localStorage.getItem('darkMode') === 'true';
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      document.getElementById('themeToggle').classList.toggle('dark', isDarkMode);
+    });
+</script>
+</body>
+</html>
